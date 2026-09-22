@@ -1,5 +1,5 @@
 # Connect Four
-A connect Four game created in Java using Swing for the graphical user interface.
+A Connect Four game created in Java using Swing for the graphical user interface.
 This is my third personal project; I created this project to practice Java GUI development and to apply earlier concepts I've learned.
 
 ## Features
