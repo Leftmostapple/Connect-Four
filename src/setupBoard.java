@@ -2,16 +2,17 @@ import javax.swing.*;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.Timer;
 
 public class setupBoard {
     JFrame mainFrame = new JFrame();
     JPanel statusPanel = new JPanel();
     JPanel boardPanel = new JPanel();
-    JLabel statusLabel = new JLabel("NAN");
+    JLabel statusLabel = new JLabel("");
     GridLayout layout = new GridLayout(6, 7);
+    JButton[][] buttons = new JButton[6][7];
 
     public JButton[][] createBoard(){
-        JButton[][] buttons = new JButton[6][7];
 
         mainFrame.setSize(800, 700);
         mainFrame.setTitle("Connect Four");
@@ -37,12 +38,21 @@ public class setupBoard {
         return buttons;
     }
 
-    public void changeStatusLabel(String newStatus){
-
-        statusLabel = new JLabel(newStatus);
+    public void changeStatusLabel(String newStatus, Color color){
+        statusLabel.setForeground(color);
+        statusLabel.setText(newStatus);
     }
 
-    public void endGame(){
-        mainFrame.dispose();
+    public void endGame(Color color){
+        for(int i = 0; i < buttons.length; i++){
+            for(int j = 0; j < buttons[i].length; j++){
+                buttons[i][j].setBackground(color);
+            }
+        }
+        Timer timer = new Timer(5000, e -> {
+            mainFrame.dispose();
+        });
+        timer.setRepeats(false);
+        timer.start();
     }
 }

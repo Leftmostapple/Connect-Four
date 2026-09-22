@@ -28,12 +28,12 @@ public class Main {
 
                             int newRow = logicalBoard.player1Move(row, column, logicArray);
                             buttons[newRow][column].setBackground(Color.RED);
-                            board.changeStatusLabel("First");
                             gameCondition = boardLogic.findConnectFour(1);
 
                             if(gameCondition == 1){
                                 System.out.println("Player 1 Wins!");
-                                board.endGame();
+                                board.changeStatusLabel("Player 1 Wins!", Color.RED);
+                                board.endGame(Color.RED);
                             }
 
                         } else {
@@ -42,7 +42,8 @@ public class Main {
                             gameCondition = boardLogic.findConnectFour(2);
                             if(gameCondition == 2){
                                 System.out.println("Player 2 Wins!");
-                                board.endGame();
+                                board.changeStatusLabel("Player 2 Wins!", Color.BLUE);
+                                board.endGame(Color.BLUE);
                             }
                         }
                     }
